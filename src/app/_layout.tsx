@@ -9,6 +9,7 @@ import "@/global.css"
 
 import { useColorScheme } from '@/src/hooks/useColorScheme';
 import {View} from "react-native";
+import ThemeToggleFloatingButton from "@/src/components/ThemeToggleFloatingButton";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -37,6 +38,7 @@ export default function RootLayout() {
         </Stack>
       </View>
       <StatusBar style="auto" />
+      <ThemeToggleFloatingButton />
     </ThemeProvider>
   );
 }
