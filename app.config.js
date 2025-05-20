@@ -1,28 +1,35 @@
+import App from "./app.json"
+
+const ORG = process.env.APP_ORG ?? 'myorg'
+const APP_NAME = App.expo.name ?? 'Unnamed App'
+const APP_SLUG = App.expo.slug ?? 'unnamed-app'
+const BUNDLE_NAME = `com.${ORG}.${APP_SLUG}`
 const IS_DEV = process.env.APP_VARIANT === 'development';
 const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
+
 const getUniqueIdentifier = () => {
   if (IS_DEV) {
-    return 'com.myorg.namedapp.dev';
+    return `${BUNDLE_NAME}.dev`;
   }
 
   if (IS_PREVIEW) {
-    return 'com.myorg.namedapp.preview';
+    return `${BUNDLE_NAME}.preview`;
   }
 
-  return 'com.myorg.namedapp';
+  return BUNDLE_NAME
 };
 
 const getAppName = () => {
   if (IS_DEV) {
-    return 'Named App (Dev)';
+    return `${APP_NAME} (Dev)`;
   }
 
   if (IS_PREVIEW) {
-    return 'Named App (Preview)';
+    return `${APP_NAME} (Preview)`;
   }
 
-  return 'Named App';
+  return `${APP_NAME}`;
 };
 
 
